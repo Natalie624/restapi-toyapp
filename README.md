@@ -1,0 +1,1 @@
+A toy application to understand how to build a REST API
