@@ -15,10 +15,3 @@ _Uses Live Server VSCode extension to run the HTML_
 * Enter book info remember what you entered for ISBN
 * open http://localhost:3000/book/<your isbn number>
 * The application will return the book information
-
-## left off ... ##
-* error in book-list.js need to fix
-* run node book-list.js
-* Go to https://stackabuse.com/building-a-rest-api-with-node-and-express/ Deleting Books section and walk through code to fix
-* update notes 
-* resources: https://wordpress.com/support/markdown-quick-reference/
