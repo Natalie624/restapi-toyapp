@@ -20,4 +20,5 @@ _Uses Live Server VSCode extension to run the HTML_
 * error in book-list.js need to fix
 * run node book-list.js
 * Go to https://stackabuse.com/building-a-rest-api-with-node-and-express/ Deleting Books section and walk through code to fix
-* update notes here
+* update notes 
+* resources: https://wordpress.com/support/markdown-quick-reference/

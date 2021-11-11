@@ -1,17 +1,19 @@
 /*
-* This is a book API app that stores information about books - 
+* This is a book API that stores information about books - 
 * ISBN number, title, author, published date, publisher and number of pages
-*
+* From tutorial: https://stackabuse.com/building-a-rest-api-with-node-and-express/
 */
 
 const express = require('express'); //import express
-//const bodyParser = require('body-parser'); // bodyParser is deprecated. express now comes with parsing ability in urlencoded so using it via express only
-const cors = require('cors');
+//const bodyParser = require('body-parser'); 
+// bodyParser is deprecated. express now comes with parsing ability in 'urlencoded' 
+const cors = require('cors'); //cors is imported from 'cors'. It defines a way in which a browser and a server can interact to determine whether it is safe to allow the request. 
+
 
 const app = express();
 const port = 3000;
 
-//where we will keep books simulating a databse. 
+// Here we are simulating a database connection. This is where we will keep books. 
 let books = [{
     "isbn": "9781593275846",
     "title": "The Sun Also Rises",
@@ -59,15 +61,15 @@ app.get('/books', (req, res) => {
 });
 
 /* Retrieving a book from the database (or the array in this example) is always done by a key specific to that entity. Each entity has a unique
-* ID. In this case it is the ISBN number. This is typically done by parsing the URL parameter for an id and searching for a book with the cooresponding id
-* ie; if the ISBN is 9781593275846 the URL would look like, http://localhost:3000/book/9781593275846.
-* Below we are using parametrized URLs. By adding a (:) to the path we can define a variable mapped to the variabel isbn. ie; if a user visits 
+* ID. In this case it is the ISBN number. This is typically done by parsing the URL parameter for an id and searching for a book with the cooresponding id.
+* 
+* Below we are using parametrized URLs. By adding a (:) to the path in the 'get' method paramter, we can define a variable mapped to the variabel isbn. ie; if a user visits 
 * localhost:3000/book/5 the isbn parameter will be 5.
 * You can accept more than one parameter in your URL if it makes sense in your scenario. For example /image/:width/:height, and then you 
 * can get those parameters using req.params.width and req.params.height.
 */
 app.get('/book/:isbn', (req, res) => {
-    //Reading isbn from the URL
+    //parsing the URL parameter for an id - reading the isbn id from the URL
     const isbn = req.params.isbn
 
     //searching books for the isbn
@@ -86,7 +88,7 @@ app.get('/book/:isbn', (req, res) => {
 * look for ISBN number
 */
 app.delete('/book/:isbn', (res, req) => {
-    //reading isbn
+    //reading isbn from the URL
     const isbn = req.params.isbn;
 
     // remove item from the books array. We are using the array 'filter' method to filter out the book with the relevant ISBN to remove it from the array.
@@ -104,7 +106,7 @@ app.post('/book/:isbn', (req, res) => {
     const isbn = req.params.isbn;
     const newBook = req.body;
 
-    //remove item from teh books array
+    //remove item from the books array
     for (let i = 0; i < books.length; i++) {
         let book = books[i]
         if (book.isbn === isbn) {

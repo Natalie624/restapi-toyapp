@@ -1,14 +1,15 @@
-/*The book-list.html template for displaying books, while this file is our client side/ browser-side logic for retrieving, updating / deleting books and displaying
-* then on the page.
+/* This is our client side/ browser-side logic for retrieving, updating / deleting books and displaying
+* them on the page.
 * In this script we are sending a GET request to the endpoint http://localhost:3000/books to retrieve books and then creating a Bootstrap card
 * for every book to display it.
 *
 */
 
 const setEditModal = (isbn) => {
-    //Get information about the book using isbn
+    
     const xhttp = new XMLHttpRequest();
-
+    
+    //Get information about the book using isbn
     xhttp.open("GET", `http://localhost:3000/book/${isbn}`, false);
     xhttp.send;
 
@@ -22,7 +23,7 @@ const setEditModal = (isbn) => {
         numOfPages,
     } = book;
 
-    //filling information about the book in teh form inside th modal
+    //filling information about the book in the form inside the modal
     document.getElementById('isbn').value = isbn;
     document.getElementById('title').value = title;
     document.getElementById('author').value=author;
@@ -30,7 +31,7 @@ const setEditModal = (isbn) => {
     document.getElementById('publish_date').value = publish_date;
     document.getElementById('numOfPages').value = numOfPages;
 
-    //setting up the URL for the book
+    //setting up the action URL for the book
     document.getElementById('editForm').action = `http://localhost:3000/book/${isbn}`;
 }
 
@@ -48,12 +49,12 @@ const deleteBook = (isbn) => {
 const loadBooks = () => {
     const xhttp = new XMLHttpRequest();
 
-    xhttp.open("GET", "http://localhost:3000/books", false);
+    xhttp.open("GET", "http://localhost:3000/books", false); //sending a GET request to the endpoint to retrieve the books
     xhttp.send();
 
     const books = JSON.parse(xhttp.responseText);
 
-    for(let book of books) {
+    for(let book of books) {  //here we create a Bootstrap card for every book to display it
         const x = `
             <div class="col-4">
                 <div class="card">
